@@ -178,7 +178,7 @@ function getHistorial(callback) {
 // ==================== API REST ENDPOINTS ====================
 
 // Obtener historial de fichajes y bajas
-app.get('/api/historial', (req, res) => {
+app.get('/api/fichajes', (req, res) => {
     getHistorial((err, rows) => {
         if (err) {
             return res.status(500).json({ error: 'Error al obtener historial' });

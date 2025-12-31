@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -17,7 +17,7 @@ const db = new sqlite3.Database('./haxball.db', err => {
 });
 
 // Endpoints de ejemplo
-app.get('/api/fichajes', (req, res) => {
+app.get('http://gas.railway.internal:8080/api/fichajes', (req, res) => {
     db.all('SELECT * FROM fichajes', (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);

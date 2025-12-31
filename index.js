@@ -178,7 +178,7 @@ function getHistorial(callback) {
 // ==================== API REST ENDPOINTS ====================
 
 // Obtener historial de fichajes y bajas
-app.get('/api/fichajes', (req, res) => {
+app.get('http://gas.railway.internal:8080/api/fichajes', (req, res) => {
     getHistorial((err, rows) => {
         if (err) {
             return res.status(500).json({ error: 'Error al obtener historial' });
@@ -188,7 +188,7 @@ app.get('/api/fichajes', (req, res) => {
 });
 
 // Obtener equipos
-app.get('/api/equipos', (req, res) => {
+app.get('http://gas.railway.internal:8080/api/fichajes', (req, res) => {
     getAllTeams((err, rows) => {
         if (err) {
             return res.status(500).json({ error: 'Error al obtener equipos' });
@@ -198,7 +198,7 @@ app.get('/api/equipos', (req, res) => {
 });
 
 // Obtener plantilla de un equipo
-app.get('/api/equipo/:roleId', (req, res) => {
+app.get('http://gas.railway.internal:8080/api/fichajes', (req, res) => {
     db.all('SELECT * FROM fichajes WHERE teamRoleId = ? AND estado = "aceptado"', 
         [req.params.roleId], 
         (err, rows) => {

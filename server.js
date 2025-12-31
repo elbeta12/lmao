@@ -16,8 +16,8 @@ const db = new sqlite3.Database('./haxball.db', err => {
     else console.log('✅ DB conectada');
 });
 
-// Endpoints de ejemplo
-app.get('http://gas.railway.internal:8080/api/fichajes', (req, res) => {
+// ✅ Endpoint CORRECTO (SIN URL COMPLETA)
+app.get('/api/fichajes', (req, res) => {
     db.all('SELECT * FROM fichajes', (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
@@ -29,4 +29,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => console.log(`🌐 Servidor corriendo en puerto ${PORT}`));
+// 🚀 Escuchar correctamente en Railway
+app.listen(PORT, '0.0.0.0', () =>
+    console.log(`🌐 Servidor corriendo en puerto ${PORT}`)
+);
